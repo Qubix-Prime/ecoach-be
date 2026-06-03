@@ -1,0 +1,232 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Tuition Management System (TMS) API",
+    "description": "API documentation for the Tuition Management System. Includes CRUD operations for Centers, Branches, Teachers, Parents, Students, and Subjects.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:9090/api/tms/v1",
+      "description": "Local Development Server"
+    }
+  ],
+  "paths": {
+    "/coach-center": {
+      "get": {
+        "tags": ["Coach Center"],
+        "summary": "Get all coach centers",
+        "responses": { "200": { "description": "Success" } }
+      },
+      "post": {
+        "tags": ["Coach Center"],
+        "summary": "Create a new coach center",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CoachCenter" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Created" } }
+      }
+    },
+    "/coach-center/{id}": {
+      "get": {
+        "tags": ["Coach Center"],
+        "summary": "Get coach center by ID",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Success" } }
+      },
+      "put": {
+        "tags": ["Coach Center"],
+        "summary": "Update coach center",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "requestBody": {
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CoachCenter" } } }
+        },
+        "responses": { "200": { "description": "Updated" } }
+      },
+      "delete": {
+        "tags": ["Coach Center"],
+        "summary": "Delete coach center",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Deleted" } }
+      }
+    },
+    "/branch": {
+      "get": {
+        "tags": ["Branch"],
+        "summary": "Get all branches",
+        "responses": { "200": { "description": "Success" } }
+      },
+      "post": {
+        "tags": ["Branch"],
+        "summary": "Create a new branch",
+        "requestBody": {
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Branch" } } }
+        },
+        "responses": { "201": { "description": "Created" } }
+      }
+    },
+    "/branch/{id}": {
+      "get": { "tags": ["Branch"], "summary": "Get branch by ID", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }], "responses": { "200": { "description": "Success" } } },
+      "put": { "tags": ["Branch"], "summary": "Update branch", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }], "requestBody": { "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Branch" } } } }, "responses": { "200": { "description": "Updated" } } },
+      "delete": { "tags": ["Branch"], "summary": "Delete branch", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }], "responses": { "200": { "description": "Deleted" } } }
+    },
+    "/teacher": {
+      "get": { "tags": ["Teacher"], "summary": "Get all teachers", "responses": { "200": { "description": "Success" } } },
+      "post": { "tags": ["Teacher"], "summary": "Create a new teacher", "requestBody": { "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Teacher" } } } }, "responses": { "201": { "description": "Created" } } }
+    },
+    "/teacher/{id}": {
+      "get": { "tags": ["Teacher"], "summary": "Get teacher by ID", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }], "responses": { "200": { "description": "Success" } } },
+      "put": { "tags": ["Teacher"], "summary": "Update teacher", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }], "requestBody": { "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Teacher" } } } }, "responses": { "200": { "description": "Updated" } } },
+      "delete": { "tags": ["Teacher"], "summary": "Delete teacher", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }], "responses": { "200": { "description": "Deleted" } } }
+    },
+    "/parent": {
+      "get": { "tags": ["Parent"], "summary": "Get all parents", "responses": { "200": { "description": "Success" } } },
+      "post": { "tags": ["Parent"], "summary": "Create a new parent", "requestBody": { "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Parent" } } } }, "responses": { "201": { "description": "Created" } } }
+    },
+    "/parent/{id}": {
+      "get": { "tags": ["Parent"], "summary": "Get parent by ID", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }], "responses": { "200": { "description": "Success" } } },
+      "put": { "tags": ["Parent"], "summary": "Update parent", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }], "requestBody": { "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Parent" } } } }, "responses": { "200": { "description": "Updated" } } },
+      "delete": { "tags": ["Parent"], "summary": "Delete parent", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }], "responses": { "200": { "description": "Deleted" } } }
+    },
+    "/student": {
+      "get": { "tags": ["Student"], "summary": "Get all students", "responses": { "200": { "description": "Success" } } },
+      "post": { "tags": ["Student"], "summary": "Create a new student", "requestBody": { "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Student" } } } }, "responses": { "201": { "description": "Created" } } }
+    },
+    "/student/{id}": {
+      "get": { "tags": ["Student"], "summary": "Get student by ID", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }], "responses": { "200": { "description": "Success" } } },
+      "put": { "tags": ["Student"], "summary": "Update student", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }], "requestBody": { "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Student" } } } }, "responses": { "200": { "description": "Updated" } } },
+      "delete": { "tags": ["Student"], "summary": "Delete student", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }], "responses": { "200": { "description": "Deleted" } } }
+    },
+    "/subject": {
+      "get": { "tags": ["Subject"], "summary": "Get all subjects", "responses": { "200": { "description": "Success" } } },
+      "post": { "tags": ["Subject"], "summary": "Create a new subject", "requestBody": { "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Subject" } } } }, "responses": { "201": { "description": "Created" } } }
+    },
+    "/subject/{id}": {
+      "get": { "tags": ["Subject"], "summary": "Get subject by ID", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }], "responses": { "200": { "description": "Success" } } },
+      "put": { "tags": ["Subject"], "summary": "Update subject", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }], "requestBody": { "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Subject" } } } }, "responses": { "200": { "description": "Updated" } } },
+      "delete": { "tags": ["Subject"], "summary": "Delete subject", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }], "responses": { "200": { "description": "Deleted" } } }
+    },
+    "/teacher-subject": {
+      "get": { "tags": ["Mappings"], "summary": "Get all teacher-subject mappings", "responses": { "200": { "description": "Success" } } },
+      "post": { "tags": ["Mappings"], "summary": "Create mapping", "requestBody": { "content": { "application/json": { "schema": { "$ref": "#/components/schemas/TeacherSubject" } } } }, "responses": { "201": { "description": "Created" } } }
+    },
+    "/student-subject": {
+      "get": { "tags": ["Mappings"], "summary": "Get all student-subject mappings", "responses": { "200": { "description": "Success" } } },
+      "post": { "tags": ["Mappings"], "summary": "Create mapping", "requestBody": { "content": { "application/json": { "schema": { "$ref": "#/components/schemas/StudentSubject" } } } }, "responses": { "201": { "description": "Created" } } }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CoachCenter": {
+        "type": "object",
+        "properties": {
+          "MC_CENTER_ID": { "type": "string" },
+          "MIC_CENTER_NM": { "type": "string" },
+          "MIC_CENTER_ADDRESS": { "type": "string" },
+          "MIC_CENTER_CITY": { "type": "string" },
+          "MIC_CENTER_STATE": { "type": "string" },
+          "MIC_CENTER_PIN": { "type": "integer" },
+          "MIC_CENTER_COUNTRY": { "type": "string" },
+          "MIC_CENTER_EMAILID": { "type": "string" },
+          "MIC_CENTER_CONTACTNO": { "type": "string" }
+        }
+      },
+      "Branch": {
+        "type": "object",
+        "properties": {
+          "CC_BR_ID": { "type": "string" },
+          "CC_BR_CENTER_ID": { "type": "string" },
+          "CC_BR_NM": { "type": "string" },
+          "CC_BR_ADDRESS": { "type": "string" },
+          "CC_BR_CITY": { "type": "string" },
+          "CC_BR_STATE": { "type": "string" },
+          "CC_BR_PIN": { "type": "integer" },
+          "CC_BR_COUNTRY": { "type": "string" },
+          "CC_BR_EMAILID": { "type": "string" },
+          "CC_BR_CONTACTNO": { "type": "string" }
+        }
+      },
+      "Teacher": {
+        "type": "object",
+        "properties": {
+          "TCHR_ID": { "type": "string" },
+          "TCHR_NM": { "type": "string" },
+          "TCHR_AADHAR": { "type": "string" },
+          "TCHR_PANCARD": { "type": "string" },
+          "TCHR_EMAILID": { "type": "string" },
+          "TCHR_CONTACTNO": { "type": "string" },
+          "TCHR_ADDRESS": { "type": "string" },
+          "TCHR_CITY": { "type": "string" },
+          "TCHR_STATE": { "type": "string" },
+          "TCHR_PIN": { "type": "integer" },
+          "TCHR_COUNTRY": { "type": "string" }
+        }
+      },
+      "Parent": {
+        "type": "object",
+        "properties": {
+          "PRNT_ID": { "type": "string" },
+          "PRNT_NM": { "type": "string" },
+          "PRNT_AADHAR": { "type": "string" },
+          "PRNT_EMAILID": { "type": "string" },
+          "PRNT_CONTACTNO": { "type": "string" },
+          "PRNT_ADDRESS": { "type": "string" },
+          "PRNT_CITY": { "type": "string" },
+          "PRNT_STATE": { "type": "string" },
+          "PRNT_PIN": { "type": "integer" },
+          "PRNT_COUNTRY": { "type": "string" }
+        }
+      },
+      "Student": {
+        "type": "object",
+        "properties": {
+          "STU_ID": { "type": "string" },
+          "STU_NM": { "type": "string" },
+          "STU_AADHAR": { "type": "string" },
+          "STU_EMAILID": { "type": "string" },
+          "STU_CONTACTNO": { "type": "string" },
+          "STU_ADDRESS": { "type": "string" },
+          "STU_CITY": { "type": "string" },
+          "STU_STATE": { "type": "string" },
+          "STU_PIN": { "type": "integer" },
+          "STU_COUNTRY": { "type": "string" },
+          "STU_DOB": { "type": "string", "format": "date" },
+          "STU_PRNT_ID": { "type": "string" }
+        }
+      },
+      "Subject": {
+        "type": "object",
+        "properties": {
+          "SUB_ID": { "type": "string" },
+          "SUB_NAME": { "type": "string" },
+          "SUB_BOARD": { "type": "string" },
+          "SUB_CLASS": { "type": "string" },
+          "SUB_LANG": { "type": "string" }
+        }
+      },
+      "TeacherSubject": {
+        "type": "object",
+        "properties": {
+          "MTS_ID": { "type": "string" },
+          "MTS_TCHR_ID": { "type": "string" },
+          "MTS_SUB": { "type": "string" },
+          "MTS_BR_ID": { "type": "string" }
+        }
+      },
+      "StudentSubject": {
+        "type": "object",
+        "properties": {
+          "MSS_ID": { "type": "string" },
+          "MSS_STU_ID": { "type": "string" },
+          "MSS_STU_TCHR": { "type": "string" },
+          "MSS_STU_DOW": { "type": "string" },
+          "MSS_STU_TIME": { "type": "string" }
+        }
+      }
+    }
+  }
+}
